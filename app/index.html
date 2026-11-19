@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VICEFRAME — Sunset Cover Studio</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <aside class="controls">
+    <header class="brand">
+      <h1>VICE<span>FRAME</span></h1>
+      <p>Your photo, a caption, and sixty seconds — out comes cover art in the multi-panel sunset-poster style. All offline: photos never leave this machine.</p>
+    </header>
+
+    <section class="step">
+      <h2>1 · Photos</h2>
+      <label class="file">Add your photos <input id="photo" type="file" accept="image/*" multiple></label>
+      <button id="useSamples" type="button" class="ghost">Use the built-in samples</button>
+      <p id="photoList" class="note">Loading samples…</p>
+    </section>
+
+    <section class="step">
+      <h2>2 · Panel layout</h2>
+      <div id="layouts" class="chips"></div>
+    </section>
+
+    <section class="step">
+      <h2>3 · Words</h2>
+      <label>Title (one line per row)
+        <textarea id="title" rows="2" maxlength="42">VICE
+HEAT</textarea>
+      </label>
+      <label>Subtitle
+        <input id="subtitle" type="text" maxlength="44" value="PORT SOLACE · EST. 2026">
+      </label>
+    </section>
+
+    <section class="step">
+      <h2>4 · Sunset grade</h2>
+      <label>Neon sunset intensity <input id="grade" type="range" min="0" max="100" value="90"></label>
+      <label class="check"><input id="badge" type="checkbox" checked> Cover Star badge</label>
+    </section>
+
+    <section class="step">
+      <h2 id="panelTitle">Panel 1 of 4</h2>
+      <label>Photo in this panel <select id="panelPhoto"></select></label>
+      <label>Zoom <input id="zoom" type="range" min="100" max="300" value="100"></label>
+      <label>Move left / right <input id="offsetX" type="range" min="-100" max="100" value="0"></label>
+      <label>Move up / down <input id="offsetY" type="range" min="-100" max="100" value="0"></label>
+      <button id="fillAll" type="button" class="ghost">Fill every panel with this photo</button>
+      <p class="note">Tip: click a panel in the preview to select it, drag to move its photo, scroll to zoom.</p>
+    </section>
+
+    <section class="step">
+      <h2>5 · Export</h2>
+      <label>Post size <select id="size"></select></label>
+      <button id="export" type="button" class="primary">Export PNG</button>
+      <button id="exportAll" type="button" class="ghost">Export all 3 sizes</button>
+      <p id="status" role="status" class="note"></p>
+    </section>
+  </aside>
+
+  <section class="stage" id="stage">
+    <canvas id="cover" width="1080" height="1080" aria-label="Your cover art preview"></canvas>
+    <p class="hint">Drop photos onto the cover to add them.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
